@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Schema;
 // Route::get('/Form',[formController::class, 'index']);
 // Route::post('/Form', [formController::class, 'displayInfo']);
 
-Route :: get('/master', [PageController:: class, 'getIndex']);
+Route :: get('/', [PageController:: class, 'getIndex']);
 
 Route :: get('database', function(){
     Schema:: create('loaisanpham', function($table){
@@ -34,3 +34,4 @@ Route :: get('database', function(){
     });
     echo "Da tao thanh cong";
 });
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');

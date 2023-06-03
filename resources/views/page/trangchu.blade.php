@@ -108,7 +108,7 @@
 											<div class="ribbon-wrapper"><div class="ribbon sale"> I Love You</div></div>
 										@endif
 										<div class="single-item-header">
-											<a href="product.html"><img src="Source/image/product/{{$new->image}}" alt=""></a>
+											<a href="products"><img src="Source/image/product/{{$new->image}}" alt=""></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">{{$new->name}}</p>
@@ -119,7 +119,7 @@
 										</div>
 										<div class="single-item-caption">
 											<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-											<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+											<a class="beta-btn primary" href="products">Details <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
 									</div>
@@ -135,7 +135,7 @@
 										<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 
 										<div class="single-item-header">
-											<a href="product.html"><img src="https://i.pinimg.com/564x/31/dc/5c/31dc5ca25faa4955e96d319536cceb73.jpg" alt=""></a>
+											<a href="products"><img src="https://i.pinimg.com/564x/31/dc/5c/31dc5ca25faa4955e96d319536cceb73.jpg" alt=""></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">Sample Woman Top</p>
@@ -146,7 +146,7 @@
 										</div>
 										<div class="single-item-caption">
 											<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-											<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+											<a class="beta-btn primary" href="products">Details <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
 									</div>
@@ -154,7 +154,7 @@
 								<div class="col-sm-3">
 									<div class="single-item">
 										<div class="single-item-header">
-											<a href="product.html"><img src="https://i.pinimg.com/564x/31/dc/5c/31dc5ca25faa4955e96d319536cceb73.jpg" alt=""></a>
+											<a href="products"><img src="https://i.pinimg.com/564x/31/dc/5c/31dc5ca25faa4955e96d319536cceb73.jpg" alt=""></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">Sample Woman Top</p>
@@ -164,7 +164,7 @@
 										</div>
 										<div class="single-item-caption">
 											<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-											<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+											<a class="beta-btn primary" href="products">Details <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
 									</div>
@@ -172,7 +172,7 @@
 								<div class="col-sm-3">
 									<div class="single-item">
 										<div class="single-item-header">
-											<a href="product.html"><img src="https://i.pinimg.com/564x/31/dc/5c/31dc5ca25faa4955e96d319536cceb73.jpg" alt=""></a>
+											<a href="products"><img src="https://i.pinimg.com/564x/31/dc/5c/31dc5ca25faa4955e96d319536cceb73.jpg" alt=""></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">Sample Woman Top</p>
@@ -182,7 +182,7 @@
 										</div>
 										<div class="single-item-caption">
 											<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-											<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+											<a class="beta-btn primary" href="products">Details <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
 									</div>
@@ -204,7 +204,7 @@
 								<div class="col-sm-3">
 									<div class="single-item">
 										<div class="single-item-header">
-											<a href="product.html"><img src="Source/image/product/{{$km->image}}" alt=""></a>
+											<a href="products"><img src="Source/image/product/{{$km->image}}" alt=""></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">{{$km->name}}</p>
@@ -214,7 +214,7 @@
 										</div>
 										<div class="single-item-caption">
 											<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-											<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+											<a class="beta-btn primary" href="products">Details <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
 									</div>
@@ -226,7 +226,7 @@
 										<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 
 										<div class="single-item-header">
-											<a href="product.html"><img src="https://www.ldg.com.vn/media/uploads/uploads/21205817-hinh-anh-gai-xinh-11.jpg" alt=""></a>
+											<a href="products"><img src="https://www.ldg.com.vn/media/uploads/uploads/21205817-hinh-anh-gai-xinh-11.jpg" alt=""></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">Sample Woman Top</p>
@@ -237,7 +237,7 @@
 										</div>
 										<div class="single-item-caption">
 											<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-											<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+											<a class="beta-btn primary" href="products">Details <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
 									</div>
@@ -245,7 +245,7 @@
 								<div class="col-sm-3">
 									<div class="single-item">
 										<div class="single-item-header">
-											<a href="product.html"><img src="https://www.ldg.com.vn/media/uploads/uploads/21205817-hinh-anh-gai-xinh-11.jpg" alt=""></a>
+											<a href="products"><img src="https://www.ldg.com.vn/media/uploads/uploads/21205817-hinh-anh-gai-xinh-11.jpg" alt=""></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">Sample Woman Top</p>
@@ -255,7 +255,7 @@
 										</div>
 										<div class="single-item-caption">
 											<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-											<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+											<a class="beta-btn primary" href="products">Details <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
 									</div>
@@ -263,7 +263,7 @@
 								<div class="col-sm-3">
 									<div class="single-item">
 										<div class="single-item-header">
-											<a href="product.html"><img src="https://www.ldg.com.vn/media/uploads/uploads/21205817-hinh-anh-gai-xinh-11.jpg" alt=""></a>
+											<a href="products"><img src="https://www.ldg.com.vn/media/uploads/uploads/21205817-hinh-anh-gai-xinh-11.jpg" alt=""></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">Sample Woman Top</p>
@@ -273,7 +273,7 @@
 										</div>
 										<div class="single-item-caption">
 											<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-											<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+											<a class="beta-btn primary" href="products">Details <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
 									</div>
@@ -284,7 +284,7 @@
 								<div class="col-sm-3">
 									<div class="single-item">
 										<div class="single-item-header">
-											<a href="product.html"><img src="https://i.pinimg.com/564x/31/dc/5c/31dc5ca25faa4955e96d319536cceb73.jpg" alt=""></a>
+											<a href="products"><img src="https://i.pinimg.com/564x/31/dc/5c/31dc5ca25faa4955e96d319536cceb73.jpg" alt=""></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">Sample Woman Top</p>
@@ -294,7 +294,7 @@
 										</div>
 										<div class="single-item-caption">
 											<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-											<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+											<a class="beta-btn primary" href="products">Details <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
 									</div>
@@ -304,7 +304,7 @@
 										<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 
 										<div class="single-item-header">
-											<a href="product.html"><img src="https://i.pinimg.com/564x/31/dc/5c/31dc5ca25faa4955e96d319536cceb73.jpg" alt=""></a>
+											<a href="products"><img src="https://i.pinimg.com/564x/31/dc/5c/31dc5ca25faa4955e96d319536cceb73.jpg" alt=""></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">Sample Woman Top</p>
@@ -315,7 +315,7 @@
 										</div>
 										<div class="single-item-caption">
 											<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-											<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+											<a class="beta-btn primary" href="products">Details <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
 									</div>
@@ -323,7 +323,7 @@
 								<div class="col-sm-3">
 									<div class="single-item">
 										<div class="single-item-header">
-											<a href="product.html"><img src="https://i.pinimg.com/564x/31/dc/5c/31dc5ca25faa4955e96d319536cceb73.jpg" alt=""></a>
+											<a href="products"><img src="https://i.pinimg.com/564x/31/dc/5c/31dc5ca25faa4955e96d319536cceb73.jpg" alt=""></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">Sample Woman Top</p>
@@ -333,7 +333,7 @@
 										</div>
 										<div class="single-item-caption">
 											<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-											<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+											<a class="beta-btn primary" href="products">Details <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
 									</div>
@@ -341,7 +341,7 @@
 								<div class="col-sm-3">
 									<div class="single-item">
 										<div class="single-item-header">
-											<a href="product.html"><img src="https://i.pinimg.com/564x/31/dc/5c/31dc5ca25faa4955e96d319536cceb73.jpg" alt=""></a>
+											<a href="products"><img src="https://i.pinimg.com/564x/31/dc/5c/31dc5ca25faa4955e96d319536cceb73.jpg" alt=""></a>
 										</div>
 										<div class="single-item-body">
 											<p class="single-item-title">Sample Woman Top</p>
@@ -351,7 +351,7 @@
 										</div>
 										<div class="single-item-caption">
 											<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-											<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+											<a class="beta-btn primary" href="products">Details <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
 									</div>
