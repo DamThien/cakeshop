@@ -18,7 +18,7 @@ class Product extends Model
      *
      * @var string
      */
-    protected $table = 'product';  // đây là thuộc tính ghi đè để chỉ định tên bảng được kết nối với mô hình
+    protected $table = 'products';  // đây là thuộc tính ghi đè để chỉ định tên bảng được kết nối với mô hình
 
     use HasFactory;
     protected $fillable = [  //$fillable: dung để xạc định các cột trong bảng
