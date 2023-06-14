@@ -90,7 +90,7 @@ use App\Http\Controllers\UserController;
         return view('users.login');
     });
     Route::post("/login", [UserController::class, "Login"]);
-    Route::post("/logout", [UserController::class, "Logout"]);
+    Route::get("/logout", [UserController::class, "Logout"]);
 
 //     Route::get('/database', function () {
 //       Schema::create('loaianpham', function ($table) {
