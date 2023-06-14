@@ -3,6 +3,7 @@
 // use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\UserController;
 //use Illuminate\Support\Facades\Schema;
 
 /*
@@ -79,9 +80,17 @@ use App\Http\Controllers\PageController;
         'as'=>'loaisanpham',			
         'uses'=>'PageController@getLoaiSp'		
         
-        ]);			
+        ]);
+    Route::get('/register', function () {
+        return view('users.register');
+    });
 
-
+    Route::post("/register", [UserController::class, "Register"]);
+    Route::get('/login', function () {
+        return view('users.login');
+    });
+    Route::post("/login", [UserController::class, "Login"]);
+    Route::post("/logout", [UserController::class, "Logout"]);
 
 //     Route::get('/database', function () {
 //       Schema::create('loaianpham', function ($table) {
