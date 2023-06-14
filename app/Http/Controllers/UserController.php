@@ -2,30 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Requests\LoginRequest;
-use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use Symfony\Component\Console\Input\Input;
+use App\Models\User;
+use Validator;
+use App\Http\Requests;
+// namespace App\Http\Controllers;
+
+// use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-
-    public function Login(Request $request)
+    public function Login(request $request)
     {
         $login = [
-            'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => $request->input('pw')
         ];
         if (Auth::attempt($login)) {
             $user = Auth::user();
             Session::put('user', $user);
-            echo '<script> alert("DANG NHAP THANH CONG");window.location.assign("trangchu");</script>';
+
+            echo '<script>alert("Đăng nhập thành công.");window.location.assign("page");</script>';
         } else {
-            echo '<script> alert("DANG NHAP THAT BAI");window.location.assign("login");</script>';
+            echo '<script>alert("Đăng nhập thất bại.");window.location.assign("login");</script>';
         }
     }
     // public function customLogin(Request $request)
