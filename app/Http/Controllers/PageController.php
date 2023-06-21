@@ -107,12 +107,6 @@ class PageController extends Controller
         $product->save();
         return $this->getIndexAdmin();
     }
-
-
-
-
-
-
     public function postAdminDelete($id)
     {
         $product = product::find($id);
@@ -136,4 +130,16 @@ class PageController extends Controller
             return '<script>alert("Vui lòng đăng nhập để sử dụng chức năng này.");window.location.assign("/login");</script>';
         }
     }
+    public function getDelItemCart($id)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->removeItem($id);
+        if (count($cart->items) > 0) {
+            Session::put('cart', $cart);
+        } else {
+            Session::forget('cart');
+        }
+        return redirect()->back();
+    }	
 }
