@@ -2,109 +2,99 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\bill_detail;
-use App\Models\Product;
+use Illuminate\Http\Request;
+
+use App\Models\Cart;
 use App\Models\slide;
+use App\Models\product;
+use App\Models\BillDetail;
+use Illuminate\Support\Facades\Session;
+
+use App\Models\comment;
 use App\Models\comments;
 use App\Models\type_products;
-use Symfony\Component\HttpFoundation\Request;
 
 class PageController extends Controller
 {
+    //
     public function getIndex()
     {
-        $slide = slide::all();
-        $newProduct = Product::where('new', 1)->paginate(8);
-        // sản phẩm khuyến mãi
-        $topProduct = Product::where('promotion_price', '<>', 0)->paginate(4);
-        return view('page.trangchu', compact('slide', 'newProduct', 'topProduct'));
+        $slide = Slide::all();
+        $new_product = product::where('new', 1)->paginate(8);
+        $sanpham_khuyenmai = product::where('promotion_price', '<>', 0)->paginate(4);
+        return view('page.trangchu', compact('slide', 'new_product', 'sanpham_khuyenmai'));
     }
-
-    public function getDetail(Request $request)
+    public function getLoaiSp($type)
     {
-        $sanpham = Product::where('id', $request->id)->first();
-        $splienquan = Product::where('id', '<>', $sanpham->id, 'and', 'id_type', '=', $sanpham->id_type, )->paginate(3);
+        $type_product = product::all();
+        $sp_theoloai = product::where('id_type', $type)->get();
+        $sp_khac = product::where('id_type', '<>', $type)->get();
+
+        $loai = type_products::all();
+
+        $loai_sp = type_products::where('id', $type)->first();
+        return view('page.loai_sanpham', compact('sp_theoloai', 'type_product', 'sp_khac', 'loai', 'loai_sp'));
+    }
+    public function getChitiet(Request $request)
+    {
+        $sanpham = product::where('id', $request->id)->first();
+        $splienquan = product::where('id', '<>', $sanpham->id, 'and', 'id_type', '=', $sanpham->id_type,)->paginate(3);
         $comments = comments::where('id_product', $request->id)->get();
         return view('page.chitiet_sanpham', compact('sanpham', 'splienquan', 'comments'));
     }
 
-    public function getLoaiSp($type)
-    {
-
-        $type_product = type_products::all(); // show ra tên loại sp
-
-        // lấy sp theo loại
-        $sp_theoloai = Product::where('id_type', $type)->limit(3)->get();
-
-        // Lay san pham hien thi Khac <> loai			
-        $sp_khac = Product::where('id_type', '<>', $type)->paginate(3);
-
-        // Lay san pham hien thi theoloai typeproduct  cho menu ben trai	
-        // $loai = type_products::all();	
-
-        // Lay ten Loai san pham moi khi chung ta chon danh muc loai san pham(phan menu ben trai)							
-        $loai_sp = type_products::where('id', $type)->first();
-
-        return view('page.loai_sanpham', compact('type_product', 'sp_theoloai', 'sp_khac', 'loai_sp'));
-    }
-
-    //Tạo Controller 	
     public function getIndexAdmin()
     {
-        $products = Product::all();
-        return view('pageadmin.admin')->with(['products' => $products, 'sumSold' => count(bill_detail::all())]);
+        $product = product::all();
+        return view('pageadmin.admin')->with(['product' => $product, 'sumSold' => count(BillDetail::all())]);
     }
-
-    //Tạo Controller để chạy View  giao diện thêm sản phẩm lên
-    public function getAdminAdd()   
+    public function getAdminAdd()
     {
         return view('pageadmin.formAdd');
     }
 
-    //Tạo Controller postAdminAdd để thêm sản phẩm						
     public function postAdminAdd(Request $request)
     {
-        $product = new Product();
+        $product = new product();
+
         if ($request->hasFile('inputImage')) {
             $file = $request->file('inputImage');
-            $fileName = $file->getClientOriginalName('inputImage');
+            $fileName = $file->getClientOriginalName();
             $file->move('source/image/product', $fileName);
-        }
-        $file_name = null;
-        if ($request->file('inputImage') != null) {
-            $file_name = $request->file('inputImage')->getClientOriginalName();
+            $product->image = $fileName;
         }
 
         $product->name = $request->inputName;
-        $product->image = $file_name;
         $product->description = $request->inputDescription;
         $product->unit_price = $request->inputPrice;
         $product->promotion_price = $request->inputPromotionPrice;
         $product->unit = $request->inputUnit;
         $product->new = $request->inputNew;
+        $product->id_type = $request->inputType;
         $product->save();
         return $this->getIndexAdmin();
     }
 
-    //Xây dựng Controller  để thực hiện Sữa giao diện cho trang sửa
+    public function getAdminEdit($id)
+    {
+        $product = product::find($id);
+        return view('pageadmin.formEdit')->with('product', $product);
+    }
+
     public function postAdminEdit(Request $request)
     {
-       
         $id = $request->editId;
-        $product = Product::find($id);
+        $product = product::find($id);
+
         if ($request->hasFile('editImage')) {
             $file = $request->file('editImage');
-            $fileName = $file->getClientOriginalName('editImage');
+            $fileName = $file->getClientOriginalName();
             $file->move('source/image/product', $fileName);
+            $product->image = $fileName;
         }
 
-        if (!$product) {
-            // Handle the case where the product is not found
-            return redirect()->back()->with('error', 'Product not found.');
-        }
-        // $fileName = null;
         if ($request->file('editImage') != null) {
-            $product ->image = $fileName;
+            $product->image = $fileName;
         }
 
         $product->name = $request->editName;
@@ -119,39 +109,31 @@ class PageController extends Controller
     }
 
 
-    //Xây dựng Controller đẻ thực hiện Sữa giao diện cho trang sửa
-    public function getAdminEdit($id)
+
+
+
+
+    public function postAdminDelete($id)
     {
-        $product = Product::find($id);
-        return view('pageadmin.formEdit')->with('product', $product);
+        $product = product::find($id);
+        $product->delete();
+        return $this->getIndexAdmin();
     }
-
-        //Xây dựng Controller đẻ thực hiện Sữa giao diện cho trang sửa
-        public function getAdminDelete($id)
-        {
-            $product = Product::find($id);
-            $product->delete();
-            return $this->getIndexAdmin();
+    public function getAddToCart(Request $req, $id)
+    {
+        if (Session::has('user')) {
+            if (Product::find($id)) {
+                $product = Product::find($id);
+                $oldCart = Session('cart') ? Session::get('cart') : null;
+                $cart = new Cart($oldCart);
+                $cart->add($product, $id);
+                $req->session()->put('cart', $cart);
+                return redirect()->back();
+            } else {
+                return '<script>alert("Không tìm thấy sản phẩm này.");window.location.assign("/");</script>';
+            }
+        } else {
+            return '<script>alert("Vui lòng đăng nhập để sử dụng chức năng này.");window.location.assign("/login");</script>';
         }
-
-
-
-    // public function detChitiet(){
-    //     return view('page.chitiet_sanpham');
-    // }
-
-    // public function getLienhe(){
-    //     return view('page.lienhe');
-    // }
-
-
-    // public function getAbout(){
-    //     return view('page.chitiet_sanpham');
-    // }
-
-
-
-
-
-
+    }
 }

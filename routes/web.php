@@ -78,7 +78,7 @@ use App\Http\Controllers\UserController;
 
     Route::get('loai-san-pham/{type}',[				
         'as'=>'loaisanpham',			
-        'uses'=>'PageController@getLoaiSp'		
+        'users'=>'PageController@getLoaiSp'		
         
         ]);
     Route::get('/register', function () {
@@ -97,12 +97,14 @@ use App\Http\Controllers\UserController;
 //           $table->increments('id');
 //           $table->string('ten', 2000);
 //       });
-  
+
 //       echo "Đã thực hiện tạo bảng thành công!";
 //   });
-  
+
 
 // Route::get('/signup',"signupController@index");
 // Route::post('/signup',"signupController@displayInfor");
 
 // Route::get('/master',"pageController@getIndex");
+Route::get('add-to-cart/{id}', [PageController::class, 'getAddToCart'])->name('themgiohang');
+Route::get('del-cart/{id}', [PageController::class, 'getDelItemCart'])->name('xoagiohang');
