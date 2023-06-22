@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\bill_detail;
 use Illuminate\Http\Request;
 
 use App\Models\Cart;
 use App\Models\slide;
 use App\Models\product;
 use App\Models\BillDetail;
+use App\Models\bills;
 use Illuminate\Support\Facades\Session;
 
-use App\Models\comment;
+use App\Models\customer;
 use App\Models\comments;
 use App\Models\type_products;
+use App\Models\wishlists;
 
 class PageController extends Controller
 {
@@ -38,7 +41,7 @@ class PageController extends Controller
     public function getChitiet(Request $request)
     {
         $sanpham = product::where('id', $request->id)->first();
-        $splienquan = product::where('id', '<>', $sanpham->id, 'and', 'id_type', '=', $sanpham->id_type,)->paginate(3);
+        $splienquan = product::where('id', '<>', $sanpham->id, 'and', 'id_type', '=', $sanpham->id_type, )->paginate(3);
         $comments = comments::where('id_product', $request->id)->get();
         return view('page.chitiet_sanpham', compact('sanpham', 'splienquan', 'comments'));
     }
@@ -46,7 +49,7 @@ class PageController extends Controller
     public function getIndexAdmin()
     {
         $product = product::all();
-        return view('pageadmin.admin')->with(['product' => $product, 'sumSold' => count(BillDetail::all())]);
+        return view('pageadmin.admin')->with(['product' => $product, 'sumSold' => count(bill_detail::all())]);
     }
     public function getAdminAdd()
     {
@@ -141,5 +144,69 @@ class PageController extends Controller
             Session::forget('cart');
         }
         return redirect()->back();
-    }	
+    }
+    public function getCheckout()
+    {
+        if (Session::has('cart')) {
+            $oldCart = Session::get('cart');
+            $cart = new Cart($oldCart);
+            return view('page.checkout')->with([
+                'cart' => Session::get('cart'),
+                'product_cart' => $cart->items,
+                'totalPrice' => $cart->totalPrice,
+                'totalQty' => $cart->totalQty
+            ]);
+            ;
+        } else {
+            return redirect('trangchu');
+        }
+    }
+
+    public function postCheckout(Request $req)
+    {
+        $cart = Session::get('cart');
+        $customer = new Customer;
+        $customer->name = $req->full_name;
+        $customer->gender = $req->gender;
+        $customer->email = $req->email;
+        $customer->address = $req->address;
+        $customer->phone_number = $req->phone;
+
+        if (isset($req->notes)) {
+            $customer->note = $req->notes;
+        } else {
+            $customer->note = "Không có ghi chú gì";
+        }
+
+        $customer->save();
+
+        $bill = new bills;
+        $bill->id_customer = $customer->id;
+        $bill->date_order = date('Y-m-d');
+        $bill->total = $cart->totalPrice;
+        $bill->payment = $req->payment_method;
+        if (isset($req->notes)) {
+            $bill->note = $req->notes;
+        } else {
+            $bill->note = "Không có ghi chú gì";
+        }
+        $bill->save();
+
+        foreach ($cart->items as $key => $value) {
+            $bill_detail = new bill_detail;
+            $bill_detail->id_bill = $bill->id;
+            $bill_detail->id_product = $key; //$value['item']['id'];																
+            $bill_detail->quantity = $value['qty'];
+            $bill_detail->unit_price = $value['price'] / $value['qty'];
+            $bill_detail->save();
+        }
+
+        Session::forget('cart');
+        $wishlists = wishlists::where('id_user', Session::get('user')->id)->get();
+        if (isset($wishlists)) {
+            foreach ($wishlists as $element) {
+                $element->delete();
+            }
+        }
+    }
 }

@@ -1,3 +1,7 @@
+<?php 
+use Illuminate\Database\Eloquent\Collection;
+?>
+
 @extends('master')
 @section('content')
     <div class="inner-header">
@@ -74,7 +78,7 @@
                                                 <a class="add-to-cart pull-left" href="#"><i
                                                         class="fa fa-heart"></i></a>
                                                 <a class="beta-btn primary"
-                                                    href="/type/{{ $sp->id }}">Details <i
+                                                    href="/chitiet_sanpham/{{ $sp->id }}">Details <i
                                                         class="fa fa-chevron-right"></i></a>
                                                 <div class="clearfix"></div>
                                                 </div>
@@ -124,7 +128,7 @@
                                             <div class="single-item-caption">
                                                 <a class="add-to-cart pull-left"
                                                     href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-                                                <a class="beta-btn primary" href="product.html">Details
+                                                <a class="beta-btn primary" href="chitiet_sanpham/{{$khac->id}}">Details
                                                     <i class="fa fa-chevron-right"></i></a>
                                                 <div class="clearfix"></div>
                                                 </div>
@@ -132,7 +136,6 @@
                                         </div>
                                 @endforeach
                                 </div>
-                            <div class="row">{{ $sp_khac->links('pagination::bootstrap-4') }}</div>
                             <div class="space40">&nbsp;</div>
 
                             </div> <!-- .beta-products-list -->

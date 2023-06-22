@@ -91,6 +91,7 @@ use App\Http\Controllers\UserController;
     });
     Route::post("/login", [UserController::class, "Login"]);
     Route::get("/logout", [UserController::class, "Logout"]);
+    Route::get('/chitiet_sanpham/{id}', [App\Http\Controllers\PageController::class, 'getChitiet']);
 
 //     Route::get('/database', function () {
 //       Schema::create('loaianpham', function ($table) {
@@ -108,3 +109,6 @@ use App\Http\Controllers\UserController;
 // Route::get('/master',"pageController@getIndex");
 Route::get('add-to-cart/{id}', [PageController::class, 'getAddToCart'])->name('themgiohang');
 Route::get('del-cart/{id}', [PageController::class, 'getDelItemCart'])->name('xoagiohang');
+
+Route::get('check-out', [PageController::class, 'getCheckout'])->name('dathang');
+Route::post('check-out', [PageController::class, 'postCheckout'])->name('dathang');
