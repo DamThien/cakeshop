@@ -112,3 +112,4 @@ Route::get('del-cart/{id}', [PageController::class, 'getDelItemCart'])->name('xo
 
 Route::get('check-out', [PageController::class, 'getCheckout'])->name('dathang');
 Route::post('check-out', [PageController::class, 'postCheckout'])->name('dathang');
+Route::post('/MomoPayment', [App\Http\Controllers\CheckoutController::class, 'MomoPayment']);

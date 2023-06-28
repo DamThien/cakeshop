@@ -114,7 +114,7 @@ use Illuminate\Database\Eloquent\Collection;
                                                 <p class="single-item-price"
                                                     style="text-align:left;font-size: 15px;">
                                                     @if ($khac->promotion_price == 0)
-                                                        <span class="flash-sale">{{ number_format($khac->unit_price) }}
+                                                        <span  class="flash-sale">{{ number_format($khac->unit_price) }}
                                                             Đồng</span>
                                                     @else
                                                         <span class="flash-del">{{ number_format($khac->unit_price) }} Đồng
